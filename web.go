@@ -11,6 +11,10 @@ import (
 
 func startServer() {
 	r := mux.NewRouter()
+
+	// Health endpoint to return 200 status
+	r.HandleFunc("/health", func(http.ResponseWriter, *http.Request) {})
+
 	api := r.PathPrefix("/api/v1").Subrouter()
 
 	api.HandleFunc("/tokens", tokensHandler)
